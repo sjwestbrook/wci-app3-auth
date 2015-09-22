@@ -1,0 +1,29 @@
+<div>
+  <h3>Applications Received</h3>
+</div>
+
+<div>
+  <label>Search applications</label>
+	<input ng-model="appFilter"></input>
+
+<!--
+  responsive table  http://codepen.io/geoffyuen/pen/FCBEg
+-->
+
+<table  class="applicants">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Position</th>
+    <!-- <th>Date Applied</th> -->
+  </tr>
+  <tr admin-dir ng-repeat="user in users | filter:appFilter">
+    <td data-th="First Name">{{ user.fname }}</td>
+    <td data-th="Last Name">{{ user.lname }}</td>
+    <td data-th="Position Desired">{{ user.position }}</td>
+    <!-- <td data-th="Date Applied">{{ user.submitDate }}</td> -->
+  </tr>
+</table>
+
+
+<!-- interview team comments -->

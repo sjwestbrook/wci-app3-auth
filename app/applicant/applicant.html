@@ -1,0 +1,870 @@
+<!-- {{ message }} -->
+
+<div class="wrapper">
+
+  <div id="applicant-header">
+    <h3>Application for Employment</h3>
+
+    <p>Applicants are considered for all positions without regard to race, creed, color, ancestry or national origin, sex, age, sexual orientation, marital or parenthood status, disability, economic status, arrest or conviction record, military reserve membership, use or nonuse of lawful products away from work, or any other legally protected status.</p>
+
+    <p class="bold">Application materials received may be considered for other openings in the organization. Incomplete application materials will not be considered.</p>
+
+    <p>Affirmative Action/Equal Employment Opportunity Employer/Program. Auxiliary aids and services are available upon request to individuals with disabilities.</p>
+
+    <p>TTY users: 1-800-947-3529 </p>
+  </div><!-- end applicant header -->
+
+  <hr>
+
+  <!-- APPLICATION FORM -->
+  <!-- https://scotch.io/tutorials/handling-checkboxes-and-radio-buttons-in-angular-forms -->
+
+  <form name="jobApp" ng-submit="submitForm(jobApp.$valid)" novalidate>
+
+    <!-- BLOCK ONE -->
+    <div id="block-one">
+      <section id="one">
+
+        <div class="form-group">
+          <label for="position">What position are you applying for?</label>
+          <input app-dir type="text" class="form-control" id="position" ng-model="user.position" required />
+        </div>
+
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input app-dir type="text" class="form-control" id="fname" ng-model="user.fname" required />
+        </div>
+
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input app-dir type="text" class="form-control" id="lname" ng-model="user.lname" required />
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input app-dir type="text" class="form-control" id="address" ng-model="user.address">
+        </div>
+
+        <div class="form-group">
+            <label for="city">City</label>
+            <input app-dir type="text" class="form-control" id="city" ng-model="user.city">
+        </div>
+
+        <!-- state -->
+        <div class="form-group" id="state"><!-- done correctly? -->
+          <label>State</label>
+          <select app-dir ng-model="user.state" >
+            <option value="WI">WI</option>
+            <option value="MN">MN</option>
+            <option value="IA">IA</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+            <label for="zip">ZIP Code</label>
+            <input app-dir type="text" class="form-control" id="zip" ng-model="user.zip">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input app-dir type="text" class="form-control" id="phone" ng-model="user.phone">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input app-dir type="email" class="form-control" id="email" ng-model="user.email">
+        </div>
+
+        <div class="form-group">
+            <label for="time">When is the best time to call?</label>
+            <input app-dir type="text" class="form-control" id="time" ng-model="user.bestTime">
+        </div>
+
+        <label>May we contact you at work?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="contactAtWork" value="yes" ng-model="user.contactAtWork.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="contactAtWork" value="no" ng-model="user.contactAtWork.no"> No
+          </label>
+        </div>
+
+        <label>Are you 18 or older?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="min18" value="yes" ng-model="user.min18.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="min18" value="no" ng-model="user.min18.no"> No
+          </label>
+        </div>
+
+        <label>If you are under 18, can you furnish a work permit?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="workPermit" value="yes" ng-model="user.workPermit.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="workPermit" value="no" ng-model="user.workPermit.no"> No
+          </label>
+        </div>
+
+        <label>Have you applied here before?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="appliedBefore" value="yes" ng-model="user.appliedBefore.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="appliedBefore" value="no" ng-model="user.appliedBefore.no"> No
+          </label>
+        </div>
+
+        <label>Have you been employed here before?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="employedBefore" value="yes" ng-model="user.employedBefore.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="employedBefore" value="no" ng-model="user.employedBefore.no"> No
+          </label>
+        </div>
+
+        <label>Are you employed now?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="employedNow" value="yes" ng-model="user.employedNow.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="employedNow" value="no" ng-model="user.employedNow.no"> No
+          </label>
+        </div>
+      </section>
+    </div><!-- END BLOCK ONE -->
+
+
+
+    <!-- BLOCK TWO  -->
+    <div id="block-two">
+      <section id="two">
+
+        <label>May we contact your present employer?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="contactEmployer" value="yes" ng-model="user.contactEmployer.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="contactEmployer" value="no" ng-model="user.contactEmployer.no"> No
+          </label>
+        </div>
+
+        <label>Are you authorized to work in the United States?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="legal" value="yes" ng-model="user.legal.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="legal" value="no" ng-model="user.legal.no"> No
+          </label>
+          <br />
+          <br />
+          <span style="font-size: 11px; font-style: italic">The Immigration Reform and Control Act of 1986 requires employers to verify the legal status and right to work of all new hires. Verification must be obtained after the decision to hire has been made.</span>
+        </div>
+
+        <!-- http://plnkr.co/edit/8MVoXNaIDW59kQnfpaWW?p=preview -->
+        <div class="form-group">
+          <div class="bold">On what date would you be available for work?
+            <input app-dir type="date" ng-model="user.startDate" />
+            <span ng-bind="convertToDate(startDate) | date:'medium'"></span>
+          </div>
+        </div>
+
+
+        <div class="form-group" id="type">
+          <label>What type of position are you looking for?</label>
+          <select app-dir ng-model="user.type">
+            <option value="fulltime">Full-time</option>
+            <option value="parttime">Part-time</option>
+            <option value="internship">Internship</option>
+            <option value="temporary">Temporary</option>
+          </select>
+        </div>
+
+        <label>Can you travel if the job requires it?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="travel" value="yes" ng-model="user.travel.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="travel" value="no" ng-model="user.travel.no"> No
+          </label>
+        </div>
+
+
+        <label>Do you have a valid driver's license?</label>
+        <div class="form-group">
+          <label>
+            <input type="radio" name="license" value="yes" ng-model="user.license.yes"> Yes
+          </label>
+          <label>
+             <input type="radio" name="license" value="no" ng-model="user.license.no"> No
+          </label>
+          <br />
+          <label>If yes, which state?</label>
+            <input app-dir type="text" class="form-control" id="licenseState" ng-model="user.licenseState">
+        </div>
+
+
+        <label>Do you have proof of auto insurance?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="insurance" value="yes" ng-model="user.insurance.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="insurance" value="no" ng-model="user.insurance.no"> No
+          </label>
+        </div>
+
+
+        <label>Are you a veteran?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="veteran" value="yes" ng-model="user.veteran.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="veteran" value="no" ng-model="user.veteran.no"> No
+          </label>
+        </div>
+
+
+        <div id="military">
+          <label>Military skills/training obtained:</label>
+          <br />
+          <textarea app-dir rows="4" cols="50" ng-model="user.militarySkills"></textarea>
+        </div>
+
+      </section>
+    </div><!-- END BLOCK TWO -->
+
+    <hr>
+
+
+    <!-- EMPLOYMENT EXPERIENCE -->
+    <div id="block-three">
+      <div>
+        <h3>Employment Experience</h3>
+        <p>Start with your present or most recent job. Include military service assignments and volunteer experiences. Exclude organization names which indicate race, color, religion, sex, ancesty or nactional origin, or other protected status.</p>
+      </div>
+
+      <!--  start employer 1 -->
+      <div id="employer1">
+      <h4>Employer 1</h4>
+        <div class="form-group">
+              <label for="empl1">Employer</label>
+              <input app-dir type="text" class="form-control" id="empl1" ng-model="user.empl1">
+            </div>
+
+        <div class="form-group">
+            <label for="empl1-phone">Phone</label>
+            <input app-dir type="text" class="form-control" id="empl1-phone" ng-model="user.empl1Phone">
+        </div>
+
+        <div class="form-group">
+            <label for="empl1-address">Address</label>
+            <input app-dir type="text" class="form-control" id="empl1-address" ng-model="user.empl1Address">
+        </div>
+
+        <div class="form-group">
+            <label for="job-title1">Job Title</label>
+            <input app-dir type="text" class="form-control" id="job-title1" ng-model="user.jobTitle1">
+        </div>
+
+        <div class="form-group">
+            <label for="supervisor1">Supervisor</label>
+            <input app-dir type="text" class="form-control" id="supervisor1" ng-model="user.supervisor1">
+        </div>
+
+        <div class="form-group">
+            <label for="start-salary1">Starting Salary (optional)</label>
+            <input app-dir type="text" class="form-control" id="start-salary1" ng-model="user.startSalary1">
+        </div>
+
+        <div class="form-group">
+            <label for="end-salary1">Ending Salary (optional)</label>
+            <input app-dir type="text" class="form-control" id="end-salary1" ng-model="user.endSalary1">
+        </div>
+
+         <div class="form-group">
+          <div class="bold">Start Date
+            <input app-dir type="date" ng-model="user.startDate1" />
+            <span ng-bind="convertToDate(startDate1) | date:'medium'"></span>
+          </div>
+        </div>
+
+         <div class="form-group">
+          <div class="bold">End Date
+            <input app-dir type="date" ng-model="user.endDate1" />
+            <span ng-bind="convertToDate(endDate1) | date:'medium'"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label app-dir for="empl1-leaving">Reason for Leaving</label>
+            <input app-dir type="text" class="form-control" id="empl1-leaving" ng-model="user.empl1Leaving">
+        </div>
+
+        <label>May we contact for reference?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="reference1" value="yes" ng-model="user.reference1.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="reference1" value="no" ng-model="user.reference1.no"> No
+          </label>
+        </div>
+
+        <label>Summarize work performed and job responsibilities:</label>
+        <br />
+        <textarea app-dir rows="4" cols="50" ng-model="user.empl1Responsibilities"></textarea>
+      </div>
+      <!--  end employer 1 -->
+
+      <br />
+
+      <!--  start employer 2 -->
+      <div id="employer2">
+        <h4>Employer 2</h4>
+        <div class="form-group">
+           <label for="empl2">Employer</label>
+           <input app-dir type="text" class="form-control" id="empl2" ng-model="user.empl2">
+        </div>
+
+        <div class="form-group">
+            <label for="empl2-phone">Phone</label>
+            <input app-dir type="text" class="form-control" id="empl2-phone" ng-model="user.empl2Phone">
+        </div>
+
+        <div class="form-group">
+            <label for="empl2-address">Address</label>
+            <input app-dir type="text" class="form-control" id="empl2-address" ng-model="user.empl2Addess">
+        </div>
+
+        <div class="form-group">
+            <label for="job-title2">Job Title</label>
+            <input app-dir type="text" class="form-control" id="job-title2" ng-model="user.jobTitle2">
+        </div>
+
+        <div class="form-group">
+            <label for="supervisor2">Supervisor</label>
+            <input app-dir type="text" class="form-control" id="supervisor2" ng-model="user.supervisor2">
+        </div>
+
+        <div class="form-group">
+            <label for="start-salary2">Starting Salary (optional)</label>
+            <input app-dir type="text" class="form-control" id="start-salary2" ng-model="user.startSalary2">
+        </div>
+
+        <div class="form-group">
+            <label for="end-salary2">Ending Salary (optional)</label>
+            <input app-dir type="text" class="form-control" id="end-salary2" ng-model="user.endSalary2">
+        </div>
+
+         <div class="form-group">
+          <div class="bold">Start Date
+            <input app-dir type="date" ng-model="user.startDate2" />
+            <span ng-bind="convertToDate(startDate2) | date:'medium'"></span>
+          </div>
+        </div>
+
+         <div class="form-group">
+          <div class="bold">End Date
+            <input app-dir type="date" ng-model="user.endDate2" />
+            <span ng-bind="convertToDate(endDate2) | date:'medium'"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="empl2-leaving">Reason for Leaving</label>
+            <input app-dir type="text" class="form-control" id="empl2-leaving" ng-model="user.empl2Leaving">
+        </div>
+
+        <label>May we contact for reference?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="reference2" value="yes" ng-model="user.reference2.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="reference2" value="no" ng-model="user.reference2.no"> No
+          </label>
+        </div>
+
+        <div id="empl2-work">
+          <label>Summarize work performed and job responsibilities:</label>
+          <br />
+          <textarea app-dir rows="4" cols="50" ng-model="user.empl2Responsibilities"></textarea>
+        </div>
+      </div>
+      <!--  end employer 2 -->
+
+      <br />
+
+      <!--  start employer 3 -->
+      <div id="employer3">
+        <h4>Employer 3</h4>
+        <div class="form-group">
+           <label for="empl3">Employer</label>
+           <input app-dir type="text" class="form-control" id="empl3" ng-model="user.empl3">
+        </div>
+
+        <div class="form-group">
+            <label for="empl3-phone">Phone</label>
+            <input app-dir type="text" class="form-control" id="empl3-phone" ng-model="user.empl3Phone">
+        </div>
+
+        <div class="form-group">
+            <label for="empl3-address">Address</label>
+            <input app-dir type="text" class="form-control" id="empl3-address" ng-model="user.empl3Address">
+        </div>
+
+        <div class="form-group">
+            <label for="job-title3">Job Title</label>
+            <input app-dir type="text" class="form-control" id="job-title3" ng-model="user.jobTitle3">
+        </div>
+
+        <div class="form-group">
+            <label for="supervisor3">Supervisor</label>
+            <input app-dir type="text" class="form-control" id="supervisor3" ng-model="user.supervisor3">
+        </div>
+
+        <div class="form-group">
+            <label for="start-salary3">Starting Salary (optional)</label>
+            <input app-dir type="text" class="form-control" id="start-salary3" ng-model="user.startSalary3">
+        </div>
+
+        <div class="form-group">
+            <label for="end-salary3">Ending Salary (optional)</label>
+            <input app-dir type="text" class="form-control" id="end-salary3" ng-model="user.endSalary3">
+        </div>
+
+         <div class="form-group">
+          <div class="bold">Start Date
+            <input app-dir type="date" ng-model="user.startDate3" />
+            <span ng-bind="convertToDate(startDate3) | date:'medium'"></span>
+          </div>
+        </div>
+
+         <div class="form-group">
+          <div class="bold">End Date
+            <input app-dir type="date" ng-model="user.endDate3" />
+            <span ng-bind="convertToDate(endDate3) | date:'medium'"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="empl3-leaving">Reason for Leaving</label>
+            <input app-dir type="text" class="form-control" id="empl3-leaving" ng-model="empl3Leaving">
+        </div>
+
+        <label>May we contact for reference?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="reference3" value="yes" ng-model="user.reference3.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="reference3" value="no" ng-model="user.reference3.no"> No
+          </label>
+        </div>
+
+        <div id="empl3-work">
+          <label>Summarize work performed and job responsibilities:</label>
+          <br />
+          <textarea app-dir rows="4" cols="50" ng-model="user.empl3Responsibilities"></textarea>
+        </div>
+      </div>
+      <!--  end employer 3 -->
+
+      <br />
+
+      <!--  start employer 4 -->
+      <div id="employer4">
+        <h4>Employer 4</h4>
+        <div class="form-group">
+           <label for="empl4">Employer</label>
+           <input app-dir type="text" class="form-control" id="empl4" ng-model="user.empl4">
+        </div>
+
+        <div class="form-group">
+            <label for="empl4-phone">Phone</label>
+            <input app-dir type="text" class="form-control" id="empl4-phone" ng-model="user.empl4Phone">
+        </div>
+
+        <div class="form-group">
+            <label for="empl4-address">Address</label>
+            <input app-dir type="text" class="form-control" id="empl4-address" ng-model="user.empl4Address">
+        </div>
+
+        <div class="form-group">
+            <label for="job-title4">Job Title</label>
+            <input app-dir type="text" class="form-control" id="job-title4" ng-model="user.jobTitle4">
+        </div>
+
+        <div class="form-group">
+            <label for="supervisor4">Supervisor</label>
+            <input app-dir type="text" class="form-control" id="supervisor4" ng-model="user.supervisor4">
+        </div>
+
+        <div class="form-group">
+            <label for="start-salary4">Starting Salary (optional)</label>
+            <input app-dir type="text" class="form-control" id="start-salary4" ng-model="user.startSalary4">
+        </div>
+
+        <div class="form-group">
+            <label for="end-salary4">Ending Salary (optional)</label>
+            <input app-dir type="text" class="form-control" id="end-salary4" ng-model="user.endSsalary4">
+        </div>
+
+         <div class="form-group">
+          <div class="bold">Start Date
+            <input app-dir type="date" ng-model="user.startDate4" />
+            <span ng-bind="convertToDate(startDate4) | date:'medium'"></span>
+          </div>
+        </div>
+
+         <div class="form-group">
+          <div class="bold">End Date
+            <input app-dir type="date" ng-model="user.endDate4" />
+            <span ng-bind="convertToDate(endDate4) | date:'medium'"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="empl4-leaving">Reason for Leaving</label>
+            <input app-dir type="text" class="form-control" id="empl4-leaving" ng-model="user.empl4Leaving">
+        </div>
+
+        <label>May we contact for reference?</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="reference3" value="yes" ng-model="user.reference4.yes"> Yes
+          </label>
+          <label>
+              <input type="radio" name="reference3" value="no" ng-model="user.reference4.no"> No
+          </label>
+        </div>
+
+        <div id="empl4-work">
+          <label>Summarize work performed and job responsibilities:</label>
+          <br />
+          <textarea app-dir rows="4" cols="50" ng-model="user.empl4Responsibilities"></textarea>
+        </div>
+      </div>
+
+      <!--  end employer 4 -->
+
+      <br />
+
+      <hr>
+
+      <div id="comments">
+        <label>Additional Comments: </label>
+        <br />
+        <textarea app-dir rows="4" cols="50" ng-model="user.comments"></textarea>
+      </div>
+
+    </div><!-- END EMPLOYMENT EXPERIENCE-->
+
+    <hr>
+
+    <!-- EDUCATION  -->
+    <div>
+      <h3>Education</h3>
+      <br />
+
+      <!-- highschool -->
+
+      <div id="highschool">
+        <h4>High School</h4>
+
+        <div class="form-group">
+          <label for="highschool">Name of High School</label>
+          <input app-dir type="text" class="form-control" id="highschool" ng-model="user.highschool">
+        </div>
+
+        <label>Years Completed/Degree (check appropriate year)</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="hs-year" value="9" ng-model="user.hsyear9">9
+          </label>
+          <label>
+              <input type="radio" name="hs-year" value="10" ng-model="user.hsyear10">10
+          </label>
+          <label>
+              <input type="radio" name="hs-year" value="11" ng-model="user.hsyear11">11
+          </label>
+          <label>
+              <input type="radio" name="hs-year" value="12" ng-model="user.hsyear12">12
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="hsdiploma">Diploma/Degree</label>
+          <input app-dir type="text" class="form-control" id="hsdiploma" ng-model="user.hsDiploma">
+        </div>
+
+        <div class="form-group">
+          <label for="hsstudies">Course of Study</label>
+          <input app-dir type="text" class="form-control" id="hsstudies" ng-model="user.hsStudies">
+        </div>
+
+      </div><!-- end highschool -->
+
+      <br />
+
+      <!-- college/uni -->
+      <div id="college">
+        <h4>College/University</h4>
+
+        <div class="form-group">
+          <label for="uni">Name of College/University</label>
+          <input app-dir type="text" class="form-control" id="college" ng-model="user.uni">
+        </div>
+
+        <label>Years Completed/Degree (check appropriate year)</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="uni-year" value="1" ng-model="user.uniyear1">1
+          </label>
+         <label>
+              <input type="radio" name="uni-year" value="2" ng-model="user.uniyear2">2
+          </label>
+          <label>
+              <input type="radio" name="uni-year" value="3" ng-model="user.uniyear3">3
+          </label>
+          <label>
+              <input type="radio" name="uni-year" value="4" ng-model="user.uniyear4">4
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="uni-degree">Diploma/Degree</label>
+          <input app-dir type="text" class="form-control" id="uni-degree" ng-model="user.uniDegree">
+        </div>
+
+        <div class="form-group">
+          <label for="uni-studies">Course of Study</label>
+          <input app-dir type="text" class="form-control" id="uni-studies" ng-model="user.uniStudies">
+        </div>
+
+      </div><!-- end college/uni -->
+
+       <br />
+
+      <!-- grad/professional -->
+      <div id="grad">
+        <h4>Graduate/Professional School</h4>
+
+        <div class="form-group">
+          <label for="grad">Name of Graduate/Professional School</label>
+          <input app-dir type="text" class="form-control" id="grad" ng-model="user.grad">
+        </div>
+
+        <label>Years Completed/Degree (check appropriate year)</label>
+        <div class="form-group">
+          <label>
+              <input type="radio" name="grad-year" value="1" ng-model="user.gradyear1">1
+          </label>
+         <label>
+              <input type="radio" name="grad-year" value="2" ng-model="user.gradyear2">2
+          </label>
+          <label>
+              <input type="radio" name="grad-year" value="3" ng-model="user.gradyear3">3
+          </label>
+          <label>
+              <input type="radio" name="grad-year" value="4" ng-model="user.gradyear4">4
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="grad-degree">Diploma/Degree</label>
+          <input app-dir type="text" class="form-control" id="grad-degree" ng-model="user.gradDegree">
+        </div>
+
+        <div class="form-group">
+          <label for="grad-studies">Course of Study</label>
+          <input app-dir type="text" class="form-control" id="grad-studies" ng-model="user.gradStudies">
+        </div>
+
+      </div><!-- end grad/professional -->
+
+       <br />
+
+      <div id="specialized-training">
+        <label>Describe specialized training, apprenticeship, skills, and extracurricular activities:</label>
+        <br />
+        <textarea app-dir rows="4" cols="50" ng-model="user.specialTraining"></textarea>
+      </div>
+
+      <div>
+        <label>Have you had any other job-related training?</label>
+          <div class="form-group">
+            <label>
+              <input type="radio" name="training" value="yes" ng-model="user.training.yes">Yes
+            </label>
+           <label>
+              <input type="radio" name="training" value="yes" ng-model="user.training.no">No
+            </label>
+        </div>
+
+        <div id="job-training">
+          <label>If so, please describe:</label>
+          <br />
+          <textarea app-dir rows="4" cols="50" ng-model="user.jobTraining"></textarea>
+        </div>
+      </div>
+
+    </div> <!-- END EDUCATION -->
+
+    <hr>
+
+
+    <!-- SPECIAL SKILLS & QUALIFICATIONS  -->
+    <div id="special-skills">
+    <h3>Special Skills and Qualifications</h3>
+      <div>
+        <label>Summarize special skils and qualifications acquired from employment or other experience:</label>
+        <br />
+        <textarea app-dir rows="4" cols="50" ng-model="user.specialSkills"></textarea>
+      </div>
+
+      <div id="activities">
+        <label>List professional, trade, business, or civic activities and offices held. (You may exclude those which indicate race, color, religion, sex, ancestry or national origin, or other protected status.)</label>
+        <br />
+        <textarea app-dir rows="4" cols="50" ng-model="user.activities"></textarea>
+      </div>
+
+      <div id="additional-info">
+        <label>State any additional information you feel may be helpful to us in considering your application:</label>
+        <br />
+        <textarea app-dir rows="4" cols="50" ng-model="user.additionalInfo"></textarea>
+      </div>
+    </div>  <!-- END SPECIAL SKILLS -->
+
+    <hr>
+
+
+    <!-- REFERENCES -->
+    <div id="references">
+    <h3>References</h3>
+
+      <p>Give name, address, and telephone number of three (3) references who are not related to you and are not previous employers.</p>
+
+      <div class="form-group">
+        <h4>Reference 1</h4>
+        <label for="ref1-name">Name</label>
+        <input app-dir type="text" class="form-control" id="ref1-name" ng-model="user.ref1">
+        <label for="ref1-address">Address</label>
+        <input app-dir type="text" class="form-control" id="ref1-address" ng-model="user.ref1Address">
+        <label for="ref1-phone">Phone Number</label>
+        <input app-dir type="text" class="form-control" id="ref1-phone" ng-model="user.ref1Phone">
+      </div>
+
+      <div class="form-group">
+        <h4>Reference 2</h4>
+        <label for="ref2-name">Name</label>
+        <input app-dir type="text" class="form-control" id="ref2-name" ng-model="user.ref2">
+        <label for="ref2-address">Address</label>
+        <input app-dir type="text" class="form-control" id="ref2-address" ng-model="user.ref2Address">
+        <label for="ref2-phone">Phone Number</label>
+        <input app-dir type="text" class="form-control" id="ref2-phone" ng--model="user.ref2Phone">
+      </div>
+
+      <div class="form-group">
+        <h4>Reference 3</h4>
+        <label for="ref3-name">Name</label>
+        <input app-dir type="text" class="form-control" id="ref3-name" ng-model="user.ref3">
+        <label for="ref3-address">Address</label>
+        <input app-dir type="text" class="form-control" id="ref3-address" ng-model="user.ref3Address">
+        <label for="ref3-phone">Phone Number</label>
+        <input app-dir type="text" class="form-control" id="ref3-phone" ng-model="user.ref3Phone">
+      </div>
+    </div> <!-- END REFERENCES -->
+
+    <hr>
+
+    <!-- MISC -->
+    <div id="misc">
+      <label>Are you related to any member of the Workforce Connections, Inc. Board of Directors?</label>
+        <div class="form-group">
+          <label>
+            <input type="radio" name="board" value="yes" ng-model="user.board.yes">Yes
+          </label>
+         <label>
+            <input type="radio" name="board" value="no" ng-model="user.board.no">No
+          </label>
+        </div>
+
+      <div class="form-group">
+        <label for="boardmember">If so, who?</label>
+        <input app-dir type="text" class="form-control" id="boardmember" ng-model="user.board">
+      </div>
+
+      <br />
+
+      <div id="referred">
+        <label>How did you hear about this position?</label>
+        <br />
+        <textarea app-dir rows="4" cols="50" ng-model="user.referred"></textarea>
+      </div>
+     </div>  <!-- END MISC -->
+
+    <hr>
+
+<!-- SECTION 7 - APPLICANT'S STATEMENT -->
+    <div id="applicant-statement">
+      <div id="statement">
+        <h3>Applicant's Statement</h3>
+
+        <p>It is understood and agreed that any misrepresentation by me in this application will be sufficient cause for cancellation of this application and/or separation from the Workforce Connections, Inc. service if I have been employed. Furthermore, I understand that just as I am free to resign at any time, Workforce Connections, Inc. reserves the right to terminate my employment at any time, with or without cause and without prior notice. I understand that no representative of Workforce Connections, Inc. has the authority to make any assurances to the contrary.</p>
+
+        <p>I give Workforce Connections, Inc. the right to investigate all references and to secure additional information about me, if job related. I give Workforce Connections, Inc. the right to investigate my criminal record, understanding that a criminal record is not necessarily a restriction to employment, as convictions will be considered only if they are substantially related to this particular job. I hereby release from liability Workforce Connections, Inc. and its representatives for seeking such information and all other persons, corporations, or organizations for furnishing such information.</p>
+
+        <p>Workforce Connections, Inc. is an equal employment opportunity/affirmative action employer. Workforce Connections, Inc. does not discriminate in employment and no question on this application is used for the purpose of limiting or excluding any applicant’s consideration for employment on a basis prohibited by local, State, or Federal law.</p>
+      </div>
+
+    <hr>
+
+    <!-- applicant signature  -->
+    <div id="signature">
+      <div class="form-group">
+        <label for="signature">Applicant Signature</label>
+        <input app-dir type="text" class="form-control" id="signature" ng-model="user.signature" required />
+      </div>
+    </div>
+
+    <!-- date submitted  -->
+    <div id="date-submitted">
+      <div class="form-group">
+        <div style="font-weight: bold">Date
+          <input app-dir type="date" ng-model="user.submitDate" required />
+          <span ng-bind="convertToDate(submitDate) | date:'medium'"></span>
+        </div>
+      </div>
+    </div>
+
+   </div> <!-- END APPLICANAT STATEMENT-->
+
+
+  <!-- SECTION 8 - BUTTONS -->
+
+    <div id="buttons">
+      <div id="buttons">
+        <button type="submit" class="btn btn-default" >Submit</button>
+        <button type="reset" class="btn btn-default" >Reset</button>
+      </div>
+    </div>
+    <!-- END BUTTONS -->
+
+
+  </form>
+
+</div>  <!-- end wrapper -->

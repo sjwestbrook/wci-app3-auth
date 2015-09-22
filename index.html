@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="wciApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Workforce Connections Inc. | Job Application Form</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <link href="styles.css" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+
+            <img src="images/wci_logo.png" alt="Workforce Connections, Inc." title="Workforce Connections, Inc." height="30px"/>
+        </a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#applicant">Applicants</a></li>
+        <li><a href="#admin">Admin</a></li>
+      </ul>
+    </div>
+    </nav>
+  </header>
+
+
+  <div class="wrapper">
+    <div>
+      <div ng-view></div>
+    </div>
+  </div>
+
+  <footer>
+    <ul>
+      <li>&copy Workforce Connections, Inc. 2015</li>
+      <li>Call 608-789-560 for assistance</li>
+    </ul>
+  </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.js"></script>
+  <!-- possibly use -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.2.2/angular-local-storage.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase-debug.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+  
+  <script src="app/app.js"></script>
+
+  <script src="app/admin/adminCtrl.js"></script>
+  <script src="app/admin/adminDir.js"></script>
+  <script src="app/admin/adminServ.js"></script>
+
+  <script src="app/applicant/applicantCtrl.js"></script>
+  <script src="app/applicant/applicantServ.js"></script>
+  <script src="app/applicant/applicantDir.js"></script>
+
+</body>
+</html>

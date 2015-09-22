@@ -1,0 +1,67 @@
+/*
+    styles for wci job application app
+*/
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 15px 0 15px;
+}
+
+h3, h4 {
+  color: #800000;
+  font-weight: bold;
+}
+
+
+footer {  /* .footer, .push? */
+  height: 4em;
+  font-family: sans-serif;
+  font-size: 10px;
+  text-align: center;
+  padding-top: 9px;
+}
+
+footer li {
+  list-style-type: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* admin.html table */
+
+.applicants {
+  background: #F7F7F7;
+  color: black;
+  border-radius: .2em;
+  overflow: hidden;
+  width: 100%;
+}
+
+.applicants tr {
+    border-bottom: 2px solid black;
+  }
+
+.applicants th {
+  color: white;
+  background-color: #800000;
+}
+
+.applicants  th, td {
+    margin: .1em 2em;
+    @media (min-width: $breakpoint-alpha) { 
+      padding: 4em !important; 
+    
+    }
+}
