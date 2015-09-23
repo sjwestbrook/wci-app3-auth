@@ -15,6 +15,7 @@ app.controller('adminCtrl', function($scope, $firebaseAuth, $firebaseObject, $fi
 
   // http://codepen.io/awesome/pen/hsAnf?editors=101
   // only need to log in to admin page
+  // leaving page after logging in successfully will log user out
   var ref = new Firebase('https://wci-app.firebaseio.com');
 
   $scope.authObj = $firebaseAuth(ref);
@@ -25,7 +26,8 @@ app.controller('adminCtrl', function($scope, $firebaseAuth, $firebaseObject, $fi
       password: $scope.password
     }).then(function(user) {
       $scope.authData = user;
-      console.log('logged in as' + user.uid)
+      console.log('logged in as ' + user.uid)
+      // changing user.uid to user.username results in 'logged in as undefined'
     }, function(error) {
       if (error) {
         console.error('Invalid Login');
