@@ -1,29 +1,55 @@
-<div>
-  <h3>Applications Received</h3>
+</div>
+  <form id="auth">
+
+    <fieldset ng-hide="authData">
+      <div class="form-group" style="display: inline-block">
+        <input app-dir type="email" class="form-control" placeholder="email" ng-model="email" />
+      </div>
+      <div class="form-group" style="display: inline-block">
+        <input app-dir type="password" class="form-control" placeholder="password" ng-model="password" />
+      </div>
+      <button type="submit" class="btn btn-default" ng-click="signIn()" style="display: inline-block">Sign In</button>
+    </fieldset>
+
+    <span ng-show="authData">
+      <button type="submit" class="btn btn-default" ng-click="auth.$logout()">Sign Out</button>
+    </span>
+
+  </form>
+  <p id="signed_in_as" class="navbar-text navbar-right" ng-show="auth.user">Signed in as {{auth.user.email}}</p>
 </div>
 
-<div>
-  <label>Search applications</label>
-	<input ng-model="appFilter"></input>
 
-<!--
-  responsive table  http://codepen.io/geoffyuen/pen/FCBEg
--->
+<hr>
 
-<table  class="applicants">
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Position</th>
-    <!-- <th>Date Applied</th> -->
-  </tr>
-  <tr admin-dir ng-repeat="user in users | filter:appFilter">
-    <td data-th="First Name">{{ user.fname }}</td>
-    <td data-th="Last Name">{{ user.lname }}</td>
-    <td data-th="Position Desired">{{ user.position }}</td>
-    <!-- <td data-th="Date Applied">{{ user.submitDate }}</td> -->
-  </tr>
-</table>
+<!-- if logged out, hide applicant data -->
+<!-- if logged in, show applicant data -->
 
+<div ng-show="authData" id="container">
+  <div>
+    <h4>Applications Received</h4>
+  </div>
 
-<!-- interview team comments -->
+  <div>
+  	<input app-dir type="text" class="form-control" placeholder="Search Applications" ng-model="appFilter"></input>
+
+    <br />
+
+  <!-- responsive table  http://codepen.io/geoffyuen/pen/FCBEg -->
+
+  <table  class="applicants">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Position</th>
+      <!-- <th>Date Applied</th> -->
+    </tr>
+    <tr admin-dir ng-repeat="user in users | filter:appFilter">
+      <td data-th="First Name">{{ user.fname }}</td>
+      <td data-th="Last Name">{{ user.lname }}</td>
+      <td data-th="Position Desired">{{ user.position }}</td>
+      <!-- <td data-th="Date Applied">{{ user.submitDate }}</td> -->
+    </tr>
+  </table>
+
+</div><!-- end container -->

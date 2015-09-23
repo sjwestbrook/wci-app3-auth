@@ -8,4 +8,14 @@ app.service('adminServ', function($firebaseArray){
     return arr.$loaded();
   }
 
+
+
+
+
+
+
+
+
+
+
 });

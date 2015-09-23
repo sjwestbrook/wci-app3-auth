@@ -1,5 +1,10 @@
 var app = angular.module('wciApp', ['ngRoute', 'firebase']);
 
+// app.constant('fb', {
+//   url: 'https://wci-app.firebaseio.com/'
+// });
+
+
 app.config(function($routeProvider){
 
   $routeProvider
